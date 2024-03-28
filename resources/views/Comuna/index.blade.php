@@ -14,8 +14,8 @@
 
 <body>
     <div class="container">
-        <h1>Communities</h1>
-
+        <h1>Listados de Columnas</h1>
+        <a href="{{ route('comunas.create') }}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
                 <tr>
