@@ -83,7 +83,10 @@ class PaisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->update($request->all());
+    
+        return redirect()->route('paises.index');
     }
 
     /**

@@ -86,7 +86,10 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->update($request->all());
+    
+        return redirect()->route('departamentos.index');
     }
 
     /**
