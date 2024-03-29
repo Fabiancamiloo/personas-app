@@ -25,6 +25,10 @@ class ComunaController extends Controller
     
         return view('comuna.index', ['comunas' => $comunas]);
     }
+    
+
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -39,6 +43,7 @@ class ComunaController extends Controller
             ->get();
         return view('comuna.new', ['municipios' => $municipios]);
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -62,6 +67,7 @@ class ComunaController extends Controller
         
         return view('comuna.index', ['comunas' => $comunas]);
     }
+    
 
     /**
      * Display the specified resource.
@@ -87,6 +93,7 @@ class ComunaController extends Controller
                         ->get();
         return view('comuna.edit', ['comuna' => $comuna, 'municipios' => $municipios]);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -108,7 +115,7 @@ class ComunaController extends Controller
     
         return view('comuna.index', ['comunas' => $comunas]);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -124,4 +131,5 @@ class ComunaController extends Controller
             ->get();
         return view('comuna.index', ['comunas' => $comunas]);
     }
+    
 }
