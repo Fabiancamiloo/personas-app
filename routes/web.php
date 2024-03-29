@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\ComunaController;
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\PaisController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,10 +22,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+// Rutas de comunas
 Route::get('/comunas', [ComunaController::class, 'index'])->name('comunas.index');
 Route::post('/comunas', [ComunaController::class, 'store'])->name('comunas.store');
 Route::get('/comunas/create', [ComunaController::class, 'create'])->name('comunas.create');
 Route::delete('/comunas/{comuna}', [ComunaController::class, 'destroy'])->name('comunas.destroy');
-Route::put('/cumunas/{comuna}', [ComunaController::class, 'update'])->name('cumunas.update');
+Route::put('/comunas/{comuna}', [ComunaController::class, 'update'])->name('comunas.update');
 Route::get('/comunas/{comuna}/edit', [ComunaController::class, 'edit'])->name('comunas.edit');
+
+// Rutas de municipios
+Route::get('/municipios', [MunicipioController::class, 'index'])->name('municipios.index');
+
+// Rutas de departamentos
+Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamentos.index');
+
+// Rutas de país
+Route::get('/paises', [PaisController::class, 'index'])->name('paises.index');
