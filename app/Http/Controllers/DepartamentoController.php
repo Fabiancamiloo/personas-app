@@ -97,6 +97,11 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->delete();
+    
+        $departamentos = DB::table('tb_departamento')->get();
+    
+        return view('departamento.index', ['departamentos' => $departamentos]);
     }
 }

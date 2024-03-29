@@ -34,13 +34,16 @@ Route::get('/comunas/{comuna}/edit', [ComunaController::class, 'edit'])->name('c
 Route::get('/municipios', [MunicipioController::class, 'index'])->name('municipios.index');
 Route::post('/municipios', [MunicipioController::class, 'store'])->name('municipios.store');
 Route::get('/municipios/create', [MunicipioController::class, 'create'])->name('municipios.create');
+Route::delete('/municipios/{municipio}', [MunicipioController::class, 'destroy'])->name('municipios.destroy');
 
 // Rutas de departamentos
 Route::get('/departamentos', [DepartamentoController::class, 'index'])->name('departamentos.index');
 Route::post('/departamentos', [DepartamentoController::class, 'store'])->name('departamentos.store');
 Route::get('/departamentos/create', [DepartamentoController::class, 'create'])->name('departamentos.create');
+Route::delete('/departamentos/{departamento}', [DepartamentoController::class, 'destroy'])->name('departamentos.destroy');
 
 // Rutas de país
 Route::get('/paises', [PaisController::class, 'index'])->name('paises.index');
 Route::post('/paises', [PaisController::class, 'store'])->name('paises.store');
 Route::get('/paises/create', [PaisController::class, 'create'])->name('paises.create');
+Route::delete('/paises/{pais}', [PaisController::class, 'destroy'])->name('paises.destroy');

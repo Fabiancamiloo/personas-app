@@ -31,6 +31,13 @@
                     <th scope="row">{{ $pais->pais_codi }}</th>
                     <td>{{ $pais->pais_nomb }}</td>
                     <td>{{ $pais->pais_capi }}</td>
+                    <td>
+                        <form action="{{ route('paises.destroy', ['pais' => $pais->pais_codi]) }}" method="POST" style="display: inline-block">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
