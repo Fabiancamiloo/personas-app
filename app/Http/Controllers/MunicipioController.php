@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Municipio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MunicipioController extends Controller
 {
@@ -22,6 +23,7 @@ class MunicipioController extends Controller
         
         return view('municipio.index', ['municipios' => $municipios]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -30,9 +32,14 @@ class MunicipioController extends Controller
      */
     public function create()
     {
-        //
+        $municipios = DB::table('tb_municipio')
+                      ->orderBy('muni_nomb')
+                      ->get();
+        
+        return view('municipio.new', ['municipios' => $municipios]);
     }
-
+    
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -41,8 +48,13 @@ class MunicipioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $municipios = DB::table('tb_municipio')
+            ->join('tb_departamento', 'tb_municipio.depa_codi', '=', 'tb_departamento.depa_codi')
+            ->select('tb_municipio.*', 'tb_departamento.depa_nomb')
+            ->orderBy('tb_municipio.muni_nomb')
+            ->get();
+        
+        return view('municipio.index', ['municipios' => $municipios]);    }
 
     /**
      * Display the specified resource.

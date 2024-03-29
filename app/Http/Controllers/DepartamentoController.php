@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Departamento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DepartamentoController extends Controller
 {
@@ -21,7 +22,8 @@ class DepartamentoController extends Controller
     
         return view('departamento.index', ['departamentos' => $departamentos]);
     }
-
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -29,8 +31,14 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        //
+        $departamentos = DB::table('tb_departamento')
+                          ->orderBy('depa_nomb')
+                          ->get();
+        
+        return view('departamento.new', ['departamentos' => $departamentos]);
     }
+    
+    
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +48,11 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $departamentos = DB::table('tb_departamento')
+        ->get();
+    
+    return view('departamento.index', ['departamentos' => $departamentos]);
     }
 
     /**

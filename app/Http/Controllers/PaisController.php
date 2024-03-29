@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Pais;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaisController extends Controller
 {
@@ -20,6 +21,8 @@ class PaisController extends Controller
         
         return view('pais.index', ['paises' => $paises]);
     }
+    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,9 +30,14 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        $paises = DB::table('tb_pais')
+                  ->orderBy('pais_nomb')
+                  ->get();
+        
+        return view('pais.new', ['paises' => $paises]);
     }
-
+    
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -38,9 +46,12 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paises = DB::table('tb_pais')
+        ->orderBy('pais_nomb')
+        ->get();
+    
+    return view('pais.index', ['paises' => $paises]);
     }
-
     /**
      * Display the specified resource.
      *
